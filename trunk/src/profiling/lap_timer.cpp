@@ -35,11 +35,7 @@ swissknife::profiling::LapHandle::valid() {
 }
 
 swissknife::profiling::LapTimer::LapTimer( bool start ) {
-  m_lapNames.push_back( std::string("defaultLap") );
   m_activeLap = addLap( std::string("defaultLap") );
-
-  m_cummulativeLapTimes.push_back(0.0);
-  m_lapIterations.push_back(0);
   m_running = false;
 
   if (start) {
@@ -160,6 +156,13 @@ swissknife::profiling::LapTimer::clear() {
 
 swissknife::profiling::LapHandle
 swissknife::profiling::LapTimer::addLap( const std::string & lapName ) {
+  //check whether we only have the defaultLap and remove
+  if( m_lapNames.size() == 1 && findLap(std::string("defaultLap")).valid() ) {
+    m_cummulativeLapTimes.clear();
+    m_lapIterations.clear();
+    m_lapNames.clear();
+  }
+
   LapHandle handle = findLap( lapName );
   if( handle.valid() )
     return handle;
