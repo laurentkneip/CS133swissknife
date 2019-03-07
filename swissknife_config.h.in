@@ -1,0 +1,3 @@
+// the configured options and settings to be passed to the code
+#define SWISSKNIFE_VERSION_MAJOR @SWISSKNIFE_VERSION_MAJOR@
+#define SWISSKNIFE_VERSION_MINOR @SWISSKNIFE_VERSION_MINOR@
