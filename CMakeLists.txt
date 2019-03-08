@@ -11,6 +11,9 @@ set(CMAKE_BUILD_TYPE Debug)
 #add path for find scripts
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/")
 
+#include CTest so we can run unit tests with CMake
+include(CTest)
+
 #find libraries
 
 #configure a header file to pass CMake settings

@@ -33,7 +33,7 @@ class LapHandle {
 
 class LapTimer {
  public:
-  LapTimer( bool start = false );
+  LapTimer( bool start = false, size_t precision = 5 );
   virtual ~LapTimer();
   
   void start();
@@ -61,6 +61,8 @@ class LapTimer {
   std::vector<std::string> m_lapNames;
   std::vector<double> m_cummulativeLapTimes;
   std::vector<size_t> m_lapIterations;
+
+  size_t m_precision;
 };
 
 }

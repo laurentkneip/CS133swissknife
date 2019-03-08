@@ -34,7 +34,8 @@ swissknife::profiling::LapHandle::valid() {
   return !(m_number < 0);
 }
 
-swissknife::profiling::LapTimer::LapTimer( bool start ) {
+swissknife::profiling::LapTimer::LapTimer( bool start, size_t precision ) {
+  m_precision = precision;
   m_activeLap = addLap( std::string("defaultLap") );
   m_running = false;
 
@@ -209,7 +210,7 @@ swissknife::profiling::LapTimer::printSummary() const {
 
   std::cout << "| It.    ";
   std::cout << "| Total  [s]";
-  std::cout << "| / It. [s]";
+  std::cout << "| / It. [s]    ";
   std::cout << "| %      ";
   std::cout << "\n";
   
@@ -217,7 +218,7 @@ swissknife::profiling::LapTimer::printSummary() const {
     std::cout << "_";
   std::cout << "_________";
   std::cout << "____________";
-  std::cout << "___________";
+  std::cout << "_______________";
   std::cout << "_________";
   std::cout << "\n";
   
@@ -254,12 +255,12 @@ swissknife::profiling::LapTimer::printSummary() const {
     
     std::cout << "| ";
     temp.str("");
-    temp << std::fixed << std::setprecision(5) << (m_cummulativeLapTimes[i]/m_lapIterations[i]);
+    temp << std::fixed << std::setprecision(m_precision) << (m_cummulativeLapTimes[i]/m_lapIterations[i]);
     item = temp.str();
     itemWidth = item.length();
     
     std::cout << item;
-    for( size_t j = 0; j < 9-itemWidth; j++ )
+    for( size_t j = 0; j < 13-itemWidth; j++ )
       std::cout << " ";
     
     std::cout << "| ";
