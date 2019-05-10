@@ -5,8 +5,10 @@ project(swissknife)
 set( SWISSKNIFE_VERSION_MAJOR 1 )
 set( SWISSKNIFE_VERSION_MINOR 0 )
 
+ADD_DEFINITIONS( -std=c++14 -mssse3 )
+
 #set build type
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Release)
 
 #add path for find scripts
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake/")
